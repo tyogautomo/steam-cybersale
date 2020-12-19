@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MainStackNavigator } from './app/navigations/MainStackNavigator';
 
 enableScreens();
-// LogBox.ignoreAllLogs();
+LogBox.ignoreAllLogs();
 
 const App = () => {
   return (

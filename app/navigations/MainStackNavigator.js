@@ -1,4 +1,5 @@
 import React from 'react';
+import { Easing } from 'react-native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { ListPage, DetailPage } from '../navigations/screens';
@@ -20,8 +21,18 @@ const MainStackNavigator = () => {
             options={{
                gestureEnabled: false,
                transitionSpec: {
-                  open: { animation: 'timing', config: { duration: 250 } },
-                  close: { animation: 'timing', config: { duration: 250 } }
+                  open: {
+                     animation: 'timing',
+                     config: {
+                        duration: 400
+                     }
+                  },
+                  close: {
+                     animation: 'timing',
+                     config: {
+                        duration: 400
+                     }
+                  }
                },
                cardStyleInterpolator: ({ current: { progress } }) => ({
                   cardStyle: {

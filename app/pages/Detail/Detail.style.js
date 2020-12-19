@@ -1,30 +1,49 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
-const cardWidth = width * 0.2;
-const cardHeight = width * 0.12
+const cardWidth = width * 0.15;
 
 const styles = StyleSheet.create({
    container: {
-      marginTop: 30,
+      flex: 1,
+      paddingTop: 30,
+      backgroundColor: 'white',
    },
    listContainer: {
       flexDirection: 'row',
-      flexWrap: 'nowrap'
+      flexWrap: 'nowrap',
+      marginLeft: (width / 2) - 8 - (cardWidth / 2),
+      marginBottom: 40
    },
    imagePreviewContainer: {
       width: cardWidth,
-      height: cardHeight,
-      borderRadius: 6,
+      height: cardWidth,
+      borderRadius: cardWidth / 2,
       marginHorizontal: 8
    },
    imagePreviewStyle: {
-      borderRadius: 6
+      borderRadius: cardWidth / 2
+   },
+   detailContainer: {
+      width: width - 50,
+      marginHorizontal: (width - (width - 50)) / 2,
+      borderRadius: 8,
+      backgroundColor: 'white',
+      height: 550
    },
    detailImage: {
-      width: width / 1.2,
+      width: '100%',
       height: 150,
-      borderRadius: 8
+      borderTopRightRadius: 8,
+      borderTopLeftRadius: 8
+   },
+   detailDescriptionContainer: {
+      flex: 1,
+      backgroundColor: '#f0f0f0',
+      borderBottomLeftRadius: 8,
+      borderBottomRightRadius: 8,
+      paddingVertical: 10,
+      paddingHorizontal: 20
    }
 });
 
