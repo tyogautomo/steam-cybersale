@@ -5,10 +5,10 @@ import { colors } from '../../themes/colors';
 const styles = StyleSheet.create({
    container: {
       backgroundColor: colors.theme4,
-      paddingTop: 30
+      paddingVertical: 30
    },
    titleContainer: {
-      marginHorizontal: 30,
+      marginHorizontal: 10,
       padding: 10,
       backgroundColor: colors.theme3,
       borderRadius: 9
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
    listContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      paddingHorizontal: 30,
+      paddingHorizontal: 10,
       justifyContent: 'space-between',
       paddingTop: 30
    }

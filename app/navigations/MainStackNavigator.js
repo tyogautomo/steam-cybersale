@@ -2,8 +2,9 @@ import React from 'react';
 import { Easing } from 'react-native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
-import { ListPage, DetailPage } from '../navigations/screens';
 import { listData } from '../resources/dummy';
+import { transitionDelay } from '../utils/constant';
+import { ListPage, DetailPage } from '../navigations/screens';
 
 const Stack = createSharedElementStackNavigator();
 
@@ -24,13 +25,15 @@ const MainStackNavigator = () => {
                   open: {
                      animation: 'timing',
                      config: {
-                        duration: 500
+                        duration: transitionDelay,
+                        easing: Easing.inOut(Easing.ease)
                      }
                   },
                   close: {
                      animation: 'timing',
                      config: {
-                        duration: 500
+                        duration: transitionDelay,
+                        easing: Easing.inOut(Easing.ease)
                      }
                   }
                },

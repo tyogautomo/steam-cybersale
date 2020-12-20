@@ -8,6 +8,7 @@ import {
 
 import { styles } from './Detail.style';
 import { listData } from '../../resources/dummy';
+import { transitionDelay } from '../../utils/constant';
 
 const { width } = Dimensions.get('window');
 
@@ -58,7 +59,7 @@ const DetailPage = ({ route, navigation }) => {
 	const runMountedAnimation = () => {
 		Animated.parallel([
 			iconIndexAnimation(200),
-			detailAnimation(1, 500)
+			detailAnimation(1, transitionDelay)
 		]).start();
 	};
 

@@ -20,6 +20,7 @@ const ListPage = (props) => {
                <ListCard key={i} uri={item.image} item={item} {...props} />
             ))}
          </View>
+         <View style={{ height: 100 }} />
       </ScrollView>
    )
 }
