@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 import { styles } from './ListCard.style';
-import { out } from 'react-native/Libraries/Animated/src/Easing';
 
 const ListCard = ({ uri, item, navigation }) => {
    const onPress = (item) => () => {
@@ -12,6 +11,7 @@ const ListCard = ({ uri, item, navigation }) => {
    };
 
    const currencyFormatter = (nominal) => {
+      // Fix this <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
       const stringNom = nominal.toString();
       let output = [];
       for (let i = stringNom.length - 1; i >= 0; i--) {
@@ -21,6 +21,10 @@ const ListCard = ({ uri, item, navigation }) => {
          }
       }
       return `Rp ${output.join('')}`;
+   };
+
+   const discountCounter = (nominal, discount) => {
+      return Math.round(nominal - (nominal * (discount / 100)));
    };
 
    return (
@@ -38,7 +42,7 @@ const ListCard = ({ uri, item, navigation }) => {
                   </View>
                   <View style={styles.discountPriceContainer}>
                      <Text style={styles.priceOrigin}>{currencyFormatter(item.price)}</Text>
-                     <Text style={styles.priceDiscounted}>{currencyFormatter(item.price)}</Text>
+                     <Text style={styles.priceDiscounted}>{currencyFormatter(discountCounter(item.price, item.discount))}</Text>
                   </View>
                </View>
                <View style={styles.leftSide}>

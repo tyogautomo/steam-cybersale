@@ -16,16 +16,37 @@ const styles = StyleSheet.create({
    titleWrap: {
       flexDirection: 'row',
       alignItems: 'center',
+      marginBottom: 5
    },
    icon: {
-      fontSize: 25,
+      fontSize: 30,
       marginRight: 10,
-      color: colors.theme5
+      color: 'white',
+      textShadowColor: '#ffbb00',
+      textShadowRadius: 9
    },
    title: {
-      color: colors.theme5,
+      color: 'white',
       fontWeight: 'bold',
-      fontSize: 20
+      fontSize: 25,
+      textShadowColor: '#ffbb00',
+      textShadowRadius: 9
+   },
+   slogan: {
+      fontSize: 12,
+      color: colors.theme5,
+      marginBottom: 10,
+      textShadowColor: '#ffbb00',
+      textShadowRadius: 5
+   },
+   date: {
+      color: colors.theme2,
+      fontStyle: 'italic',
+      fontSize: 14
+   },
+   feat: {
+      color: colors.theme5,
+      fontSize: 12
    },
    listContainer: {
       flexDirection: 'row',
