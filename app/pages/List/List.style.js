@@ -13,6 +13,15 @@ const styles = StyleSheet.create({
       backgroundColor: colors.theme3,
       borderRadius: 9
    },
+   titleWrap: {
+      flexDirection: 'row',
+      alignItems: 'center',
+   },
+   icon: {
+      fontSize: 25,
+      marginRight: 10,
+      color: colors.theme5
+   },
    title: {
       color: colors.theme5,
       fontWeight: 'bold',

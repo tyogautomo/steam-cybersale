@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
       width: cardWidth,
       height: cardWidth,
       borderRadius: cardWidth / 2,
+      borderColor: colors.theme2
    },
    imagePreviewStyle: {
       borderRadius: cardWidth / 2

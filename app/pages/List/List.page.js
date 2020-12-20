@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { styles } from './List.style';
 import { listData } from '../../resources/dummy';
@@ -9,7 +10,10 @@ const ListPage = (props) => {
    return (
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Winter Sale 2077</Text>
+            <View style={styles.titleWrap}>
+               <Icon name="steam" style={styles.icon} />
+               <Text style={styles.title}>Winter Sale 2077</Text>
+            </View>
          </View>
          <View style={styles.listContainer}>
             {listData.map((item, i) => (

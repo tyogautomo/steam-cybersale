@@ -24,13 +24,13 @@ const MainStackNavigator = () => {
                   open: {
                      animation: 'timing',
                      config: {
-                        duration: 400
+                        duration: 500
                      }
                   },
                   close: {
                      animation: 'timing',
                      config: {
-                        duration: 400
+                        duration: 500
                      }
                   }
                },

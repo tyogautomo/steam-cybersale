@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BackHandler } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -18,6 +18,7 @@ const DetailPage = ({ route, navigation }) => {
 	const initialItemIndex = listData.findIndex(el => el.id === item.id);
 	const mountedAnimation = useRef(new Animated.Value(0)).current;
 	const activeIndex = useRef(new Animated.Value(initialItemIndex)).current;
+	const [indexState, setIndexState] = useState(initialItemIndex);
 	const activeIndexAnimation = useRef(new Animated.Value(initialItemIndex)).current;
 
 	useEffect(() => {
@@ -34,10 +35,12 @@ const DetailPage = ({ route, navigation }) => {
 		const newIndex = (e.nativeEvent.contentOffset.x) / width;
 		activeIndex.setValue(newIndex);
 		forceUpdate();
+		setIndexState(newIndex);
 	};
 
 	const onPressIcon = (i) => () => {
 		activeIndex.setValue(i);
+		setIndexState(i);
 		flatListRef.current.scrollToIndex({
 			index: i,
 			animated: true
@@ -55,7 +58,7 @@ const DetailPage = ({ route, navigation }) => {
 	const runMountedAnimation = () => {
 		Animated.parallel([
 			iconIndexAnimation(200),
-			detailAnimation(1, 400)
+			detailAnimation(1, 500)
 		]).start();
 	};
 
@@ -70,7 +73,7 @@ const DetailPage = ({ route, navigation }) => {
 	const detailAnimation = (toValue, delay) => {
 		return Animated.timing(mountedAnimation, {
 			toValue,
-			duration: 200,
+			duration: 400,
 			delay,
 			useNativeDriver: true
 		});
@@ -94,7 +97,7 @@ const DetailPage = ({ route, navigation }) => {
 					<SharedElement id={`photo.${item.id}`} >
 						<ImageBackground
 							source={{ uri: item.image }}
-							style={styles.icon}
+							style={[styles.icon, { borderWidth: indexState == i ? 2 : 0 }]}
 							imageStyle={styles.imagePreviewStyle}
 							resizeMode="cover"
 						/>

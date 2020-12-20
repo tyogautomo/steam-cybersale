@@ -12,7 +12,7 @@ const ListCard = ({ uri, item, navigation }) => {
    return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress(item)} style={styles.container}>
          <View style={styles.descPreviewContainer}>
-
+            <Text>All Reviews</Text>
          </View>
          <SharedElement id={`photo.${item.id}`} key={item.id}>
             <ImageBackground

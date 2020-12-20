@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
       height: 70,
       width: width / 2.5,
       backgroundColor: colors.theme3,
-      borderRadius: 6
+      borderRadius: 6,
+      padding: 8,
+      paddingTop: 14
    }
 });
 
