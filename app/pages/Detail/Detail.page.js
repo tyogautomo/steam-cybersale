@@ -44,7 +44,7 @@ const DetailPage = ({ route, navigation }) => {
 		Animated.parallel([
 			Animated.timing(activeIndexAnimation, {
 				toValue: activeIndex,
-				duration: 300,
+				duration: 200,
 				useNativeDriver: true
 			}),
 			detailAnimation(1, 400)
@@ -74,10 +74,20 @@ const DetailPage = ({ route, navigation }) => {
 	};
 
 	const renderIconList = () => {
+		const size = (width * 0.15) + 16;
+		const translateX = activeIndexAnimation.interpolate({
+			inputRange: [-1, 0, 1],
+			outputRange: [size, 0, -size]
+		})
 		return (
-			<View style={styles.listContainer}>
+			<Animated.View style={[
+				styles.listContainer,
+				{
+					transform: [{ translateX }]
+				}
+			]}>
 				{listData.map((item, i) => renderPreviewIcon(item, i))}
-			</View>
+			</Animated.View>
 		);
 	};
 
