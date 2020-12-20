@@ -59,18 +59,43 @@ const styles = StyleSheet.create({
       alignItems: 'flex-end'
    },
    rightSide: {
-      flex: 3,
-      borderWidth: 1
+      flexDirection: 'row',
+      flex: 5
    },
    osIcon: {
       fontSize: 12,
       color: colors.theme4
    },
-   discountCount: {
-      
+   discountCountContainer: {
+      flex: 1,
+      backgroundColor: colors.theme6,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderTopLeftRadius: 3,
+      borderBottomLeftRadius: 3
+   },
+   discount: {
+      fontSize: 16,
+      color: colors.theme7
    },
    discountPriceContainer: {
-
+      flex: 1.5,
+      backgroundColor: colors.theme1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderTopRightRadius: 3,
+      borderBottomRightRadius: 3
+   },
+   priceOrigin: {
+      fontSize: 9,
+      color: colors.theme4,
+      marginBottom: 3,
+      fontStyle: 'italic',
+      textDecorationLine: 'line-through'
+   },
+   priceDiscounted: {
+      fontSize: 11,
+      color: colors.theme2
    }
 });
 

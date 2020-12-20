@@ -4,10 +4,23 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 import { styles } from './ListCard.style';
+import { out } from 'react-native/Libraries/Animated/src/Easing';
 
 const ListCard = ({ uri, item, navigation }) => {
    const onPress = (item) => () => {
       navigation.navigate('DetailPage', { item })
+   };
+
+   const currencyFormatter = (nominal) => {
+      const stringNom = nominal.toString();
+      let output = [];
+      for (let i = stringNom.length - 1; i >= 0; i--) {
+         output.unshift(stringNom[i]);
+         if (i % 3 === 0 && i !== stringNom.length - 1 && i !== 0) {
+            output.unshift(' ');
+         }
+      }
+      return `Rp ${output.join('')}`;
    };
 
    return (
@@ -20,11 +33,12 @@ const ListCard = ({ uri, item, navigation }) => {
             </Text>
             <View style={styles.footer}>
                <View style={styles.rightSide}>
-                  <View style={styles.discountCount}>
-
+                  <View style={styles.discountCountContainer}>
+                     <Text style={styles.discount}>- {item.discount}%</Text>
                   </View>
                   <View style={styles.discountPriceContainer}>
-
+                     <Text style={styles.priceOrigin}>{currencyFormatter(item.price)}</Text>
+                     <Text style={styles.priceDiscounted}>{currencyFormatter(item.price)}</Text>
                   </View>
                </View>
                <View style={styles.leftSide}>

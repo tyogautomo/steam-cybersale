@@ -6,7 +6,9 @@ const listData = [
       reviews: {
          word: 'Overwhelmingly Positive',
          count: '857,281'
-      }
+      },
+      discount: 95,
+      price: 768000
    },
    {
       id: 2,
@@ -15,7 +17,9 @@ const listData = [
       reviews: {
          word: 'Positive',
          count: '242,775'
-      }
+      },
+      discount: 85,
+      price: 334999
    },
    {
       id: 3,
@@ -24,7 +28,9 @@ const listData = [
       reviews: {
          word: 'Very Positive',
          count: '267,342'
-      }
+      },
+      discount: 80,
+      price: 640000
    },
    {
       id: 4,
@@ -33,7 +39,9 @@ const listData = [
       reviews: {
          word: 'Very Positive',
          count: '267,342'
-      }
+      },
+      discount: 99,
+      price: 290000
    },
    {
       id: 5,
@@ -42,7 +50,9 @@ const listData = [
       reviews: {
          word: 'Mixed',
          count: '86,583'
-      }
+      },
+      discount: 88,
+      price: 719000
    },
    {
       id: 6,
@@ -51,7 +61,9 @@ const listData = [
       reviews: {
          word: 'Overwhelmingly Positive',
          count: '924,278'
-      }
+      },
+      discount: 87,
+      price: 359999
    },
    {
       id: 7,
@@ -60,7 +72,9 @@ const listData = [
       reviews: {
          word: 'Positive',
          count: '153,743'
-      }
+      },
+      discount: 86,
+      price: 829000
    },
    {
       id: 8,
@@ -69,7 +83,9 @@ const listData = [
       reviews: {
          word: 'Positive',
          count: '339,112'
-      }
+      },
+      discount: 78,
+      price: 209000
    }
 ]
 
