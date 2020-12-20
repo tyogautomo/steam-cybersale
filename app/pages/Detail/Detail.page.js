@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { BackHandler } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
 	View, Text, ImageBackground, Image, Dimensions, ScrollView, Animated
 } from 'react-native';
@@ -12,6 +13,8 @@ const { width } = Dimensions.get('window');
 
 const DetailPage = ({ route, navigation }) => {
 	const { item } = route.params;
+	const forceUpdate = React.useReducer(bool => !bool)[1];
+	const flatListRef = useRef();
 	const initialItemIndex = listData.findIndex(el => el.id === item.id);
 	const mountedAnimation = useRef(new Animated.Value(0)).current;
 	const activeIndex = useRef(new Animated.Value(initialItemIndex)).current;
@@ -19,8 +22,8 @@ const DetailPage = ({ route, navigation }) => {
 
 	useEffect(() => {
 		runMountedAnimation();
-		initBackHandler();
-		return () => initBackHandler().remove();
+		const backHandler = initBackHandler();
+		return () => backHandler.remove();
 	}, []);
 
 	const onPressBack = () => {
@@ -30,46 +33,81 @@ const DetailPage = ({ route, navigation }) => {
 	const onMomentumScrollEnd = (e) => {
 		const newIndex = (e.nativeEvent.contentOffset.x) / width;
 		activeIndex.setValue(newIndex);
+		forceUpdate();
+	};
+
+	const onPressIcon = (i) => () => {
+		activeIndex.setValue(i);
+		flatListRef.current.scrollToIndex({
+			index: i,
+			animated: true
+		});
+		forceUpdate();
 	};
 
 	const initBackHandler = () => {
-		const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+		return BackHandler.addEventListener('hardwareBackPress', () => {
 			onPressBack();
 			return true;
-		})
-		return backHandler;
+		});
 	};
 
 	const runMountedAnimation = () => {
 		Animated.parallel([
-			Animated.timing(activeIndexAnimation, {
-				toValue: activeIndex,
-				duration: 200,
-				useNativeDriver: true
-			}),
+			iconIndexAnimation(200),
 			detailAnimation(1, 400)
 		]).start();
+	};
+
+	const iconIndexAnimation = (duration) => {
+		return Animated.spring(activeIndexAnimation, {
+			toValue: activeIndex,
+			duration,
+			useNativeDriver: true
+		})
 	};
 
 	const detailAnimation = (toValue, delay) => {
 		return Animated.timing(mountedAnimation, {
 			toValue,
-			duration: 300,
+			duration: 200,
 			delay,
 			useNativeDriver: true
 		});
 	};
 
-	const renderPreviewIcon = (item, i) => {
+	const renderIcon = (item, i) => {
+		const opacity = activeIndexAnimation.interpolate({
+			inputRange: [(i - 1), i, (i + 1)],
+			outputRange: [0.2, 1, 0.2],
+			extrapolate: 'clamp'
+		});
+		const converText = (title) => {
+			if (title.length > 6) {
+				return `${title.substr(0, 6)}...`
+			}
+			return title;
+		};
 		return (
-			<SharedElement id={`photo.${item.id}`} key={i}>
-				<ImageBackground
-					source={{ uri: item.image }}
-					style={styles.imagePreviewContainer}
-					imageStyle={styles.imagePreviewStyle}
-					resizeMode="cover"
-				/>
-			</SharedElement>
+			<TouchableOpacity key={i} onPress={onPressIcon(i)}>
+				<Animated.View style={[styles.iconContainer, { opacity }]}>
+					<SharedElement id={`photo.${item.id}`} >
+						<ImageBackground
+							source={{ uri: item.image }}
+							style={styles.icon}
+							imageStyle={styles.imagePreviewStyle}
+							resizeMode="cover"
+						/>
+					</SharedElement>
+					<Animated.Text style={[
+						{ opacity: mountedAnimation },
+						styles.iconTitle
+					]}
+					>
+						{converText(item.title)}
+					</Animated.Text>
+				</Animated.View>
+			</TouchableOpacity>
 		);
 	};
 
@@ -86,7 +124,7 @@ const DetailPage = ({ route, navigation }) => {
 					transform: [{ translateX }]
 				}
 			]}>
-				{listData.map((item, i) => renderPreviewIcon(item, i))}
+				{listData.map((item, i) => renderIcon(item, i))}
 			</Animated.View>
 		);
 	};
@@ -96,10 +134,13 @@ const DetailPage = ({ route, navigation }) => {
 			<View style={styles.detailContainer}>
 				<Image source={{ uri: item.image }} style={styles.detailImage} resizeMode="cover" />
 				<View style={styles.detailDescriptionContainer}>
-					<ScrollView>
-						{Array(50).fill('').map((_, i) => (
-							<Text key={i}>{item.title}</Text>
-						))}
+					<ScrollView showsVerticalScrollIndicator={false}>
+						<Text style={styles.descriptionTitle}>{item.title}</Text>
+						{Array(7).fill('').map((_, i) => <Text key={i} style={styles.descText}>{item.title} description explained</Text>)}
+						<View style={{ height: 20 }} />
+						{Array(7).fill('').map((_, i) => <Text key={i} style={styles.descText}>{item.title} description explained</Text>)}
+						<View style={{ height: 20 }} />
+						{Array(7).fill('').map((_, i) => <Text key={i} style={styles.descText}>{item.title} description explained</Text>)}
 					</ScrollView>
 				</View>
 			</View>
@@ -113,6 +154,7 @@ const DetailPage = ({ route, navigation }) => {
 		})
 		return (
 			<Animated.FlatList
+				ref={flatListRef}
 				style={{
 					opacity: mountedAnimation,
 					transform: [{ translateY }]
@@ -121,12 +163,17 @@ const DetailPage = ({ route, navigation }) => {
 				renderItem={renderDetailContainer}
 				keyExtractor={(item) => item.id}
 				onMomentumScrollEnd={onMomentumScrollEnd}
-				horizontal
 				snapToInterval={width}
 				snapToAlignment="start"
 				decelerationRate="fast"
-				pagingEnabled
 				initialScrollIndex={initialItemIndex}
+				getItemLayout={(data, index) => ({
+					length: width,
+					offset: width * index,
+					index
+				})}
+				horizontal
+				pagingEnabled
 			/>
 		);
 	};

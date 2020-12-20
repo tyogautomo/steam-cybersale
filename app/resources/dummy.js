@@ -1,43 +1,43 @@
 const listData = [
    {
       id: 1,
-      title: 'First image',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+      title: 'Cyberpunk 2077',
+      image: 'https://c4.wallpaperflare.com/wallpaper/410/716/989/cyberpunk-2077-video-games-gun-3d-yellow-background-hd-wallpaper-preview.jpg'
    },
    {
       id: 2,
-      title: 'Second image',
-      image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+      title: 'Monster Hunter: World',
+      image: 'https://cdn3.dualshockers.com/wp-content/uploads/2018/01/MonsterHunterWorld-5-1-ds1-1340x1340.jpg'
    },
    {
       id: 3,
-      title: 'Third image',
-      image: 'https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+      title: 'Red Dead Redemption: 2',
+      image: 'https://wallpaperaccess.com/full/677566.jpg'
    },
    {
       id: 4,
-      title: 'Fourth image',
-      image: 'https://images.unsplash.com/photo-1459213599465-03ab6a4d5931?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80'
+      title: 'Grand Theft Auto: V',
+      image: 'https://www.gameindo.com/wp-content/uploads/2020/06/0001-gta5-1000x1000-1.jpg'
    },
    {
       id: 5,
-      title: 'Fifth image',
-      image: 'https://images.unsplash.com/photo-1490604001847-b712b0c2f967?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1980&q=80'
+      title: 'Watch Dogs: Legion',
+      image: 'https://wallpapercave.com/wp/wp4387716.jpg'
    },
    {
       id: 6,
-      title: 'Sixth image',
-      image: 'https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80'
+      title: 'The Witcher III',
+      image: 'https://www.wallpaperflare.com/static/857/611/652/the-witcher-the-witcher-3-wild-hunt-geralt-of-rivia-witcher-wallpaper.jpg'
    },
    {
       id: 7,
-      title: 'Seventh image',
-      image: 'https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8bGFuZHNjYXBlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+      title: 'Death Stranding',
+      image: 'https://wallpapercave.com/wp/wp4883791.jpg'
    },
    {
       id: 8,
-      title: 'Eigthth image',
-      image: 'https://images.unsplash.com/photo-1502786129293-79981df4e689?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGxhbmRzY2FwZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+      title: 'Horizon: Zero Dawn',
+      image: 'https://images-na.ssl-images-amazon.com/images/I/81Uuuv0OM9L._AC_SL1500_.jpg'
    }
 ]
 

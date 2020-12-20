@@ -1,6 +1,6 @@
 import React from 'react';
 import { SharedElement } from 'react-navigation-shared-element';
-import { Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 import { styles } from './ListCard.style';
 
@@ -10,11 +10,14 @@ const ListCard = ({ uri, item, navigation }) => {
    };
 
    return (
-      <TouchableOpacity activeOpacity={0.8} onPress={onPress(item)}>
+      <TouchableOpacity activeOpacity={0.8} onPress={onPress(item)} style={styles.container}>
+         <View style={styles.descPreviewContainer}>
+
+         </View>
          <SharedElement id={`photo.${item.id}`} key={item.id}>
             <ImageBackground
                source={{ uri }}
-               style={styles.cardContainer}
+               style={styles.backgroundContainer}
                imageStyle={styles.imageBackground}
                resizeMode="cover"
             />
