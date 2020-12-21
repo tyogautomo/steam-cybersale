@@ -1,4 +1,4 @@
-import { banner1, banner2, banner3 } from '../themes/images';
+import { banner1, banner2, banner3, banner4 } from '../themes/images';
 
 const listData = [
    {
@@ -103,6 +103,10 @@ const bannerData = [
    {
       id: 2,
       image: banner3
+   },
+   {
+      id: 2,
+      image: banner4
    }
 ]
 

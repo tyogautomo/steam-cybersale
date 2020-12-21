@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 import { colors } from '../../themes/colors';
+import { outerRingDiameter } from '../../utils/constant';
 
 const { width } = Dimensions.get('window');
 const SPACING = 10;
@@ -45,9 +46,9 @@ const styles = StyleSheet.create({
       marginRight: 20
    },
    activeDot: {
-      width: 15,
-      height: 15,
-      borderRadius: 15,
+      width: outerRingDiameter,
+      height: outerRingDiameter,
+      borderRadius: outerRingDiameter,
       borderWidth: 2,
       borderColor: colors.theme2,
       position: 'absolute',
