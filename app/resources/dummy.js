@@ -1,3 +1,5 @@
+import { banner1, banner2, banner3 } from '../themes/images';
+
 const listData = [
    {
       id: 1,
@@ -89,4 +91,19 @@ const listData = [
    }
 ]
 
-export { listData };
+const bannerData = [
+   {
+      id: 0,
+      image: banner1
+   },
+   {
+      id: 1,
+      image: banner2
+   },
+   {
+      id: 2,
+      image: banner3
+   }
+]
+
+export { listData, bannerData };
