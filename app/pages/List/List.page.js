@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { ScrollView, View, Text, ImageBackground, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -10,28 +10,35 @@ import { Carousel } from '../../components/Carousel/Carousel.component';
 import { HEADER_HEIGHT } from '../../utils/constant';
 
 const ListPage = (props) => {
-   const scrollY = useRef(new Animated.Value(0)).current;
-   const top = scrollY.interpolate({
-      inputRange: [0, HEADER_HEIGHT],
-      outputRange: [0, -HEADER_HEIGHT],
-      extrapolate: 'clamp'
-   });
+   const translateY = useRef(new Animated.Value(0)).current;
+   let currentOffset = 0;
+   let direction = 'up';
 
-   const onScroll = () => {
-      return Animated.event([
-         {
-            nativeEvent: {
-               contentOffset: {
-                  y: scrollY
-               }
-            }
-         }
-      ])
+   const onScroll = (e) => {
+      const offsetY = e.nativeEvent.contentOffset.y;
+      if (currentOffset < offsetY && direction === 'up') {
+         direction = 'down';
+         Animated.timing(translateY, {
+            toValue: -HEADER_HEIGHT,
+            duration: 500,
+            useNativeDriver: true
+         }).start();
+      }
+      if (currentOffset > offsetY && direction === 'down' || offsetY < 10) {
+         direction = 'up'
+         Animated.timing(translateY, {
+            toValue: 0,
+            duration: 200,
+            useNativeDriver: true
+         }).start();
+      }
+
+      currentOffset = offsetY;
    }
 
    const renderHeader = () => {
       return (
-         <Animated.View style={[styles.headerContainer, { top }]}>
+         <Animated.View style={[styles.headerContainer, { transform: [{ translateY }] }]}>
             <Icon name="menu" style={styles.menu} />
          </Animated.View>
       );
@@ -40,7 +47,7 @@ const ListPage = (props) => {
    return (
       <>
          <ScrollView
-            onScroll={onScroll()}
+            onScroll={onScroll}
             style={styles.container}
             showsVerticalScrollIndicator={false}
          >
