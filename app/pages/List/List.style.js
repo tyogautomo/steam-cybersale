@@ -47,13 +47,6 @@ const styles = StyleSheet.create({
    feat: {
       color: colors.theme5,
       fontSize: 12
-   },
-   listContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      paddingHorizontal: 10,
-      justifyContent: 'space-between',
-      paddingTop: 30
    }
 });
 

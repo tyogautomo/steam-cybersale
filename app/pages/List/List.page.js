@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { styles } from './List.style';
 import { listData } from '../../resources/dummy';
-import { ListCard } from '../../components/ListCard/ListCard.component';
+import { NominationList } from '../../components/NominationList/NominationList.component';
+import { Carousel } from '../../components/Carousel/Carousel.component';
 
 const ListPage = (props) => {
    return (
@@ -14,15 +15,12 @@ const ListPage = (props) => {
                <Icon name="steam" style={styles.icon} />
                <Text style={styles.title}>Doomsday Sale 2077</Text>
             </View>
-            <Text style={styles.slogan}>The 2077 Steampunk Steam SALE. Save the day by playing your lover game</Text>
+            <Text style={styles.slogan}>The Cybergalactica Steam Sale 2077. Save the day by playing your favorite games</Text>
             <Text style={styles.date}>Dec 21st - Jan 24th @ 10am PST</Text>
             <Text style={styles.feat}>Featuring Steam Awards © Nomination</Text>
          </View>
-         <View style={styles.listContainer}>
-            {listData.map((item, i) => (
-               <ListCard key={i} uri={item.image} item={item} {...props} />
-            ))}
-         </View>
+         <Carousel />
+         <NominationList listData={listData} {...props} />
          <View style={{ height: 100 }} />
       </ScrollView>
    )

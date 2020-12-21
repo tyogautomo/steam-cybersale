@@ -11,14 +11,15 @@ const ListCard = ({ uri, item, navigation }) => {
    };
 
    const currencyFormatter = (nominal) => {
-      // Fix this <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
       const stringNom = nominal.toString();
       let output = [];
+      let counter = 1;
       for (let i = stringNom.length - 1; i >= 0; i--) {
          output.unshift(stringNom[i]);
-         if (i % 3 === 0 && i !== stringNom.length - 1 && i !== 0) {
+         if (counter % 3 === 0 && i !== 0) {
             output.unshift(' ');
          }
+         counter++;
       }
       return `Rp ${output.join('')}`;
    };
