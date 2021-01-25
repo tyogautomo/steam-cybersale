@@ -35,8 +35,8 @@ const DetailPage = ({ route, navigation }) => {
 	const onMomentumScrollEnd = (e) => {
 		const newIndex = (e.nativeEvent.contentOffset.x) / width;
 		activeIndex.setValue(newIndex);
-		forceUpdate();
 		setIndexState(newIndex);
+		forceUpdate();
 	};
 
 	const onPressIcon = (i) => () => {
